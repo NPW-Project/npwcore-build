@@ -334,11 +334,10 @@ function startGulp(name, opts) {
   //gulp.task('release', ['release:patch']);
 
 
-  task['test:browser'] = 
-    gulp.series(task['browser:uncompressed'], task['browser:maketests'], task['test:karma']);
-
 
   if (browser) {
+    task['test:browser'] = 
+      gulp.series(task['browser:uncompressed'], task['browser:maketests'], task['test:karma']);  
     task['test']= gulp.series(task['test:node'], task['test:browser']);
   } else {
     task['test']= task['test:node'];
